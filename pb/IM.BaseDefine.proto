@@ -17,15 +17,15 @@ enum ServiceID{
 
 // command id for login
 enum LoginCmdID{
-    CID_LOGIN_REQ_MSGSERVER         = 0x0101; 	//
-    CID_LOGIN_RES_MSGSERVER         = 0x0102;	//
+    CID_LOGIN_REQ_MSGSERVER         = 0x0101; 	// 请求登录服务器地址
+    CID_LOGIN_RES_MSGSERVER         = 0x0102;	// 请求登录服务器地址回应
     CID_LOGIN_REQ_USERLOGIN         = 0x0103;	//
     CID_LOGIN_RES_USERLOGIN         = 0x0104;	//
     CID_LOGIN_REQ_LOGINOUT          = 0x0105;	//
     CID_LOGIN_RES_LOGINOUT          = 0x0106; 	//
     CID_LOGIN_KICK_USER				= 0x0107; 	//
-    CID_LOGIN_REQ_DEVICETOKEN       = 0x0108;  //
-    CID_LOGIN_RES_DEVICETOKEN       = 0x0109;  //
+    CID_LOGIN_REQ_DEVICETOKEN       = 0x0108;   //
+    CID_LOGIN_RES_DEVICETOKEN       = 0x0109;   //
     CID_LOGIN_REQ_KICKPCCLIENT      = 0x010a;
     CID_LOGIN_RES_KICKPCCLIENT      = 0x010b;
     CID_LOGIN_REQ_PUSH_SHIELD       = 0x010c;	//勿扰
@@ -114,7 +114,7 @@ enum SwitchServiceCmdID{
 }
 
 enum OtherCmdID{
-    CID_OTHER_HEARTBEAT                     = 0x0701;
+    CID_OTHER_HEARTBEAT                     = 0x0701; // 心跳
     CID_OTHER_STOP_RECV_PACKET              = 0x0702;
     CID_OTHER_VALIDATE_REQ                  = 0x0703;
     CID_OTHER_VALIDATE_RSP                  = 0x0704;
@@ -122,9 +122,9 @@ enum OtherCmdID{
     CID_OTHER_GET_DEVICE_TOKEN_RSP          = 0x0706;
     CID_OTHER_ROLE_SET                      = 0x0707;
     CID_OTHER_ONLINE_USER_INFO              = 0x0708;
-    CID_OTHER_MSG_SERV_INFO                 = 0x0709;
+    CID_OTHER_MSG_SERV_INFO                 = 0x0709; // 接收到MSG_SERVER的服务器信息
     CID_OTHER_USER_STATUS_UPDATE            = 0x070a;
-    CID_OTHER_USER_CNT_UPDATE               = 0x070b;
+    CID_OTHER_USER_CNT_UPDATE               = 0x070b; // 用户数量变化更新
     CID_OTHER_SERVER_KICK_USER              = 0x070d;
     CID_OTHER_LOGIN_STATUS_NOTIFY           = 0x070e;
     CID_OTHER_PUSH_TO_USER_REQ              = 0x070f;

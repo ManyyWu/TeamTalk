@@ -84,8 +84,10 @@ void CLoginConn::OnConnect2(net_handle_t handle, int conn_type)
 		conn_map = &g_client_conn_map;
 	}else
 
+	// 将连接对象添加到
 	conn_map->insert(make_pair(handle, this));
 
+	// 重新设置callback和userdata
 	netlib_option(handle, NETLIB_OPT_SET_CALLBACK, (void*)imconn_callback);
 	netlib_option(handle, NETLIB_OPT_SET_CALLBACK_DATA, (void*)conn_map);
 }

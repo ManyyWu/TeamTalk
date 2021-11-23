@@ -81,6 +81,7 @@ int CBaseSocket::Listen(const char* server_ip, uint16_t port, callback_t callbac
 	log("CBaseSocket::Listen on %s:%d", server_ip, port);
 
 	AddBaseSocket(this);
+	// CEventDispatch::Instance()会创建全局CEventDispatch实例
 	CEventDispatch::Instance()->AddEvent(m_socket, SOCKET_READ | SOCKET_EXCEP);
 	return NETLIB_OK;
 }
@@ -199,7 +200,7 @@ void CBaseSocket::OnWrite()
 		if (error) {
 			m_callback(m_callback_data, NETLIB_MSG_CLOSE, (net_handle_t)m_socket, NULL);
 		} else {
-			m_state = SOCKET_STATE_CONNECTED;
+			m_state = SOCKET_STATE_CONNECTED; // 第一次收到EPOLLWR标志连接成功
 			m_callback(m_callback_data, NETLIB_MSG_CONFIRM, (net_handle_t)m_socket, NULL);
 		}
 	}
@@ -339,6 +340,7 @@ void CBaseSocket::_AcceptNewSocket()
 		_SetNonblock(fd);
 		AddBaseSocket(pSocket);
 		CEventDispatch::Instance()->AddEvent(fd, SOCKET_READ | SOCKET_EXCEP);
+		// 新连接callback默认为listen socket的callback
 		m_callback(m_callback_data, NETLIB_MSG_CONNECT, (net_handle_t)fd, NULL);
 	}
 }

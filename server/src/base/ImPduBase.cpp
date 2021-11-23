@@ -119,6 +119,7 @@ int CImPdu::ReadPduHeader(uchar_t* buf, uint32_t len)
 
 CImPdu* CImPdu::ReadPdu(uchar_t *buf, uint32_t len)
 {
+	// 获取并检查长度，不是完整的包则return
 	uint32_t pdu_len = 0;
 	if (!IsPduAvailable(buf, len, pdu_len))
 		return NULL;

@@ -19,6 +19,7 @@ void client_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pP
 {
 	if (msg == NETLIB_MSG_CONNECT)
 	{
+		// 创建新连接对象
 		CLoginConn* pConn = new CLoginConn();
 		pConn->OnConnect2(handle, LOGIN_CONN_TYPE_CLIENT);
 	}

@@ -122,8 +122,10 @@ int CImConn::Send(void* data, int len)
 
 void CImConn::OnRead()
 {
+	// 全部读完
 	for (;;)
 	{
+		// 扩展buffer
 		uint32_t free_buf_len = m_in_buf.GetAllocSize() - m_in_buf.GetWriteOffset();
 		if (free_buf_len < READ_BUF_SIZE)
 			m_in_buf.Extend(READ_BUF_SIZE);
@@ -147,6 +149,7 @@ void CImConn::OnRead()
             
 			HandlePdu(pPdu);
 
+			// 将剩余数据移到buffer开始位置
 			m_in_buf.Read(NULL, pdu_len);
 			delete pPdu;
             pPdu = NULL;
